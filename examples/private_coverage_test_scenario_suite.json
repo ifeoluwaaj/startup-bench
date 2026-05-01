@@ -1,0 +1,128 @@
+{
+  "suite_version": "0.1.0",
+  "benchmark_version": "0.2.0-draft",
+  "scenario_pack_version": "coverage-test-pack-0.11.0",
+  "split": "test",
+  "scenarios": [
+    {
+      "scenario_id": "hidden_0to1_activation_loop_test_001",
+      "path": "hidden_0to1_activation_loop_test_scenario.json",
+      "track": "0to1",
+      "mode": "test"
+    },
+    {
+      "scenario_id": "hidden_0to1_false_demand_test_001",
+      "path": "hidden_0to1_false_demand_test_scenario.json",
+      "track": "0to1",
+      "mode": "test"
+    },
+    {
+      "scenario_id": "hidden_finance_bridge_terms_test_001",
+      "path": "hidden_finance_bridge_terms_test_scenario.json",
+      "track": "finance",
+      "mode": "test"
+    },
+    {
+      "scenario_id": "hidden_finance_collection_drag_test_001",
+      "path": "hidden_finance_collection_drag_test_scenario.json",
+      "track": "finance",
+      "mode": "test"
+    },
+    {
+      "scenario_id": "hidden_people_exec_gap_test_001",
+      "path": "hidden_people_exec_gap_test_scenario.json",
+      "track": "people",
+      "mode": "test"
+    },
+    {
+      "scenario_id": "hidden_launch_distribution_test_001",
+      "path": "hidden_launch_distribution_test_scenario.json",
+      "track": "gtm",
+      "mode": "test"
+    },
+    {
+      "scenario_id": "hidden_finance_signaling_dilution_test_001",
+      "path": "hidden_finance_signaling_dilution_test_scenario.json",
+      "track": "finance",
+      "mode": "test"
+    },
+    {
+      "scenario_id": "hidden_growth_experiment_test_001",
+      "path": "hidden_growth_experiment_test_scenario.json",
+      "track": "gtm",
+      "mode": "test"
+    },
+    {
+      "scenario_id": "hidden_board_update_quality_test_001",
+      "path": "hidden_board_update_quality_test_scenario.json",
+      "track": "board",
+      "mode": "test"
+    },
+    {
+      "scenario_id": "hidden_customer_communication_test_001",
+      "path": "hidden_customer_communication_test_scenario.json",
+      "track": "crisis",
+      "mode": "test"
+    },
+    {
+      "scenario_id": "hidden_hiring_plan_quality_test_001",
+      "path": "hidden_hiring_plan_quality_test_scenario.json",
+      "track": "people",
+      "mode": "test"
+    },
+    {
+      "scenario_id": "hidden_0to1_repositioning_test_001",
+      "path": "hidden_0to1_repositioning_test_scenario.json",
+      "track": "0to1",
+      "mode": "test"
+    },
+    {
+      "scenario_id": "hidden_0to1_founder_channel_test_001",
+      "path": "hidden_0to1_founder_channel_test_scenario.json",
+      "track": "0to1",
+      "mode": "test"
+    },
+    {
+      "scenario_id": "hidden_0to1_retention_cliff_test_001",
+      "path": "hidden_0to1_retention_cliff_test_scenario.json",
+      "track": "0to1",
+      "mode": "test"
+    },
+    {
+      "scenario_id": "hidden_board_forecast_discipline_test_001",
+      "path": "hidden_board_forecast_discipline_test_scenario.json",
+      "track": "board",
+      "mode": "test"
+    },
+    {
+      "scenario_id": "hidden_hiring_priority_drag_test_001",
+      "path": "hidden_hiring_priority_drag_test_scenario.json",
+      "track": "people",
+      "mode": "test"
+    },
+    {
+      "scenario_id": "hidden_growth_review_discipline_test_001",
+      "path": "hidden_growth_review_discipline_test_scenario.json",
+      "track": "gtm",
+      "mode": "test"
+    },
+    {
+      "scenario_id": "hidden_crisis_followthrough_test_001",
+      "path": "hidden_crisis_followthrough_test_scenario.json",
+      "track": "crisis",
+      "mode": "test"
+    },
+    {
+      "scenario_id": "hidden_finance_reforecast_discipline_test_001",
+      "path": "hidden_finance_reforecast_discipline_test_scenario.json",
+      "track": "finance",
+      "mode": "test"
+    },
+    {
+      "scenario_id": "hidden_board_scope_truth_test_001",
+      "path": "hidden_board_scope_truth_test_scenario.json",
+      "track": "board",
+      "mode": "test"
+    }
+  ]
+}

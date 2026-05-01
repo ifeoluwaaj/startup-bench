@@ -1,0 +1,86 @@
+{
+  "suite_version": "0.1.0",
+  "benchmark_version": "0.2.0-draft",
+  "scenario_pack_version": "strategy-fresh-pack-0.9.0",
+  "split": "fresh",
+  "scenarios": [
+    {
+      "scenario_id": "hidden_board_stakeholder_conflict_fresh_001",
+      "path": "hidden_board_stakeholder_conflict_fresh_scenario.json",
+      "track": "board",
+      "mode": "fresh"
+    },
+    {
+      "scenario_id": "hidden_board_financing_truth_fresh_001",
+      "path": "hidden_board_financing_truth_fresh_scenario.json",
+      "track": "board",
+      "mode": "fresh"
+    },
+    {
+      "scenario_id": "hidden_board_incident_truth_fresh_001",
+      "path": "hidden_board_incident_truth_fresh_scenario.json",
+      "track": "board",
+      "mode": "fresh"
+    },
+    {
+      "scenario_id": "hidden_product_delayed_consequence_fresh_001",
+      "path": "hidden_product_delayed_consequence_fresh_scenario.json",
+      "track": "product",
+      "mode": "fresh"
+    },
+    {
+      "scenario_id": "hidden_scale_multi_quarter_fresh_001",
+      "path": "hidden_scale_multi_quarter_fresh_scenario.json",
+      "track": "scale",
+      "mode": "fresh"
+    },
+    {
+      "scenario_id": "hidden_scale_platform_sequence_fresh_001",
+      "path": "hidden_scale_platform_sequence_fresh_scenario.json",
+      "track": "scale",
+      "mode": "fresh"
+    },
+    {
+      "scenario_id": "hidden_product_migration_sequence_fresh_001",
+      "path": "hidden_product_migration_sequence_fresh_scenario.json",
+      "track": "product",
+      "mode": "fresh"
+    },
+    {
+      "scenario_id": "hidden_board_product_truth_fresh_001",
+      "path": "hidden_board_product_truth_fresh_scenario.json",
+      "track": "board",
+      "mode": "fresh"
+    },
+    {
+      "scenario_id": "hidden_gtm_multi_quarter_sequence_fresh_001",
+      "path": "hidden_gtm_multi_quarter_sequence_fresh_scenario.json",
+      "track": "gtm",
+      "mode": "fresh"
+    },
+    {
+      "scenario_id": "hidden_scale_finance_tradeoff_fresh_001",
+      "path": "hidden_scale_finance_tradeoff_fresh_scenario.json",
+      "track": "scale",
+      "mode": "fresh"
+    },
+    {
+      "scenario_id": "hidden_board_hiring_truth_fresh_001",
+      "path": "hidden_board_hiring_truth_fresh_scenario.json",
+      "track": "board",
+      "mode": "fresh"
+    },
+    {
+      "scenario_id": "hidden_product_platform_tax_fresh_001",
+      "path": "hidden_product_platform_tax_fresh_scenario.json",
+      "track": "product",
+      "mode": "fresh"
+    },
+    {
+      "scenario_id": "hidden_gtm_efficiency_sequence_fresh_001",
+      "path": "hidden_gtm_efficiency_sequence_fresh_scenario.json",
+      "track": "gtm",
+      "mode": "fresh"
+    }
+  ]
+}

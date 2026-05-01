@@ -1,0 +1,589 @@
+{
+  "ledger_version": "0.1.0",
+  "benchmark_version": "0.2.0-draft",
+  "last_updated": "2026-03-09",
+  "milestones": [
+    {
+      "milestone_id": "v0.9.5",
+      "status": "completed",
+      "objective": "Stabilize TheStartupBench as a serious internal benchmark candidate.",
+      "success_targets": [
+        "hidden test inventory >= 50",
+        "strategy hidden pack broadened further across long-horizon tracks",
+        "official benchmark task system adopted",
+        "calibration execution moved into active planning"
+      ]
+    },
+    {
+      "milestone_id": "v0.10.0",
+      "status": "in_progress",
+      "objective": "Become a community-credible benchmark candidate.",
+      "success_targets": [
+        "hidden test inventory >= 75",
+        "hidden fresh inventory >= 40",
+        "operator calibration completed for promoted packs",
+        "official evaluation window frozen"
+      ]
+    },
+    {
+      "milestone_id": "v1.0.0",
+      "status": "pending",
+      "objective": "Ship a defensible public benchmark release.",
+      "success_targets": [
+        "hidden test inventory >= 100",
+        "fresh refresh process live",
+        "human/operator baseline published",
+        "leaderboard operations live"
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": "BT-001",
+      "title": "Publish benchmark maturity plan",
+      "workstream": "benchmark-operations",
+      "milestone_id": "v0.9.5",
+      "priority": "high",
+      "status": "completed",
+      "benchmark_risk": "low",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "maturity rubric documented",
+        "milestone targets documented",
+        "implementation sequence documented"
+      ],
+      "artifacts": [
+        "docs/benchmark_maturity_plan.md"
+      ]
+    },
+    {
+      "task_id": "BT-002",
+      "title": "Establish benchmark task system",
+      "workstream": "benchmark-operations",
+      "milestone_id": "v0.9.5",
+      "priority": "high",
+      "status": "completed",
+      "benchmark_risk": "low",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "machine-readable ledger exists",
+        "human-readable board exists",
+        "docs link to the task system"
+      ],
+      "artifacts": [
+        "examples/benchmark_task_ledger.json",
+        "docs/benchmark_task_board.md"
+      ]
+    },
+    {
+      "task_id": "BT-003",
+      "title": "Expand hidden test corpus to at least 50 scenarios",
+      "workstream": "corpus-scale",
+      "milestone_id": "v0.9.5",
+      "priority": "highest",
+      "status": "completed",
+      "benchmark_risk": "medium",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "hidden test inventory >= 50",
+        "growth is balanced across thin tracks",
+        "promotion metadata updated"
+      ],
+      "progress_notes": "Current hidden test inventory is 50 active scenarios across strategy, coverage, operator, real-world, and canary packs.",
+      "artifacts": [
+        "examples/private_operator_test_scenario_suite.json",
+        "examples/private_operator_fresh_scenario_suite.json",
+        "examples/operator_public_test_manifest.json",
+        "examples/operator_public_fresh_manifest.json",
+        "examples/hidden_gtm_discount_spiral_test_scenario.json",
+        "examples/hidden_gtm_partner_backfire_test_scenario.json",
+        "examples/hidden_finance_receivables_freeze_test_scenario.json",
+        "examples/hidden_finance_stepdown_raise_test_scenario.json",
+        "examples/hidden_people_exec_backfill_test_scenario.json",
+        "examples/hidden_people_support_burnout_test_scenario.json",
+        "examples/hidden_people_decision_latency_test_scenario.json"
+      ]
+    },
+    {
+      "task_id": "BT-004",
+      "title": "Broaden strategy pack across long-horizon tracks",
+      "workstream": "corpus-scale",
+      "milestone_id": "v0.9.5",
+      "priority": "highest",
+      "status": "completed",
+      "benchmark_risk": "medium",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "strategy pack covers board, product, scale, and gtm",
+        "each added family has fresh/test variants",
+        "strategy hidden suite remains distinct and valid"
+      ],
+      "progress_notes": "Now covers board, product, scale, and gtm with valid hidden test and fresh variants across promoted long-horizon families."
+    },
+    {
+      "task_id": "BT-005",
+      "title": "Run operator calibration wave 002 for promoted strategy families",
+      "workstream": "calibration",
+      "milestone_id": "v0.10.0",
+      "priority": "highest",
+      "status": "in_progress",
+      "benchmark_risk": "high",
+      "owner": "calibration-taskforce",
+      "completion_criteria": [
+        "review roster assigned",
+        "promoted strategy scenarios reviewed by operators",
+        "score-vs-operator disagreements logged"
+      ],
+      "progress_notes": "Wave-002 strategy suite, study manifest, launcher, reviewer outreach, compilation helper, live study run, reviewer assignments, and exported founder/product/ops packets now exist. Task stays in progress until real operator reviews are collected and disagreements are logged.",
+      "artifacts": [
+        "examples/human_review_wave_002_strategy_suite.json",
+        "examples/operator_human_review_wave_002_manifest.json",
+        "docs/human_review_wave_002.md",
+        "docs/reviewer_outreach_wave_002.md",
+        "scripts/launch_human_review_wave_002.ps1",
+        "scripts/compile_human_review_wave_002.ps1"
+      ]
+    },
+    {
+      "task_id": "BT-006",
+      "title": "Freeze one official evaluation reporting window",
+      "workstream": "official-eval",
+      "milestone_id": "v0.10.0",
+      "priority": "high",
+      "status": "completed",
+      "benchmark_risk": "high",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "official run settings frozen",
+        "window start and end dates documented",
+        "hosted vs self-reported distinction documented"
+      ],
+      "progress_notes": "The first official reporting window is frozen for 2026-03-15 through 2026-04-12 with a validated official-eval-window artifact, hosted vs self-reported reporting rules, and the active frozen pack set synced to current versions.",
+      "artifacts": [
+        "examples/official_eval_profile.json",
+        "examples/official_eval_window_v0_9_0.json",
+        "docs/official_evaluation_window_v0_9_0.md",
+        "docs/frozen_active_packs.md"
+      ]
+    },
+    {
+      "task_id": "BT-007",
+      "title": "Publish leaderboard governance pack",
+      "workstream": "benchmark-operations",
+      "milestone_id": "v0.10.0",
+      "priority": "high",
+      "status": "completed",
+      "benchmark_risk": "high",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "leaderboard entry types defined",
+        "contamination response path documented",
+        "release note and retirement rules documented"
+      ],
+      "progress_notes": "A versioned governance pack now defines hosted, self-reported, and reference-baseline entry types, contamination response handling, release-note triggers, and retirement rules tied to the current official evaluation window.",
+      "artifacts": [
+        "examples/leaderboard_governance_pack_v0_9_0.json",
+        "docs/leaderboard_governance_pack_v0_9_0.md",
+        "spec/leaderboard_protocol.md"
+      ]
+    },
+    {
+      "task_id": "BT-008",
+      "title": "Define hidden pack rotation policy",
+      "workstream": "hidden-eval-integrity",
+      "milestone_id": "v0.10.0",
+      "priority": "high",
+      "status": "completed",
+      "benchmark_risk": "high",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "pack refresh cadence defined",
+        "retirement triggers defined",
+        "fresh-to-test promotion rules defined"
+      ],
+      "progress_notes": "A versioned hidden-pack rotation policy now defines fresh refresh cadence, test-window boundary rules, retirement triggers, fresh-to-test promotion requirements, and the required metadata updates for pack rotation events.",
+      "artifacts": [
+        "examples/hidden_pack_rotation_policy_v0_9_0.json",
+        "docs/hidden_pack_rotation_policy_v0_9_0.md",
+        "spec/hidden_eval_policy.md"
+      ]
+    },
+    {
+      "task_id": "BT-009",
+      "title": "Add second 0to1 ambiguity expansion batch",
+      "workstream": "corpus-scale",
+      "milestone_id": "v0.9.5",
+      "priority": "highest",
+      "status": "completed",
+      "benchmark_risk": "medium",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "at least 3 new hidden 0to1 scenarios exist",
+        "test and fresh coverage both expand",
+        "evaluation remains programmatic-first"
+      ],
+      "artifacts": [
+        "examples/minimal_0to1_repositioning_scenario.json",
+        "examples/hidden_0to1_repositioning_test_scenario.json",
+        "examples/hidden_0to1_founder_channel_test_scenario.json",
+        "examples/hidden_0to1_retention_cliff_test_scenario.json",
+        "examples/private_coverage_test_scenario_suite.json",
+        "examples/private_coverage_fresh_scenario_suite.json"
+      ]
+    },
+    {
+      "task_id": "BT-010",
+      "title": "Add scale-finance interaction strategy family",
+      "workstream": "corpus-scale",
+      "milestone_id": "v0.9.5",
+      "priority": "high",
+      "status": "completed",
+      "benchmark_risk": "medium",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "new dev scenario exists",
+        "hidden test and fresh variants exist",
+        "strategy pack metadata and tests are updated"
+      ],
+      "artifacts": [
+        "examples/minimal_scale_finance_tradeoff_scenario.json",
+        "examples/hidden_scale_finance_tradeoff_test_scenario.json",
+        "examples/hidden_scale_finance_tradeoff_fresh_scenario.json",
+        "examples/private_strategy_test_scenario_suite.json",
+        "examples/private_strategy_fresh_scenario_suite.json"
+      ]
+    },
+    {
+      "task_id": "BT-011",
+      "title": "Add strategy depth batch 001 toward hidden test 60",
+      "workstream": "corpus-scale",
+      "milestone_id": "v0.10.0",
+      "priority": "highest",
+      "status": "completed",
+      "benchmark_risk": "medium",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "at least 3 new hidden strategy test scenarios exist",
+        "matching fresh variants exist",
+        "strategy pack metadata and tests are updated"
+      ],
+      "progress_notes": "Strategy hidden coverage now includes board hiring truth, delayed-consequence product platform tax, and GTM efficiency sequencing. Active strategy hidden test inventory is 13 and benchmark-wide hidden test inventory is 53.",
+      "artifacts": [
+        "examples/hidden_board_hiring_truth_test_scenario.json",
+        "examples/hidden_board_hiring_truth_fresh_scenario.json",
+        "examples/hidden_product_platform_tax_test_scenario.json",
+        "examples/hidden_product_platform_tax_fresh_scenario.json",
+        "examples/hidden_gtm_efficiency_sequence_test_scenario.json",
+        "examples/hidden_gtm_efficiency_sequence_fresh_scenario.json",
+        "examples/private_strategy_test_scenario_suite.json",
+        "examples/private_strategy_fresh_scenario_suite.json",
+        "examples/strategy_public_test_manifest.json",
+        "examples/strategy_public_fresh_manifest.json"
+      ]
+    },
+    {
+      "task_id": "BT-012",
+      "title": "Add canary depth batch 001",
+      "workstream": "hidden-eval-integrity",
+      "milestone_id": "v0.10.0",
+      "priority": "high",
+      "status": "completed",
+      "benchmark_risk": "high",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "at least 2 new hidden canary scenarios exist",
+        "matching fresh variants exist",
+        "canary suite and manifests are updated"
+      ],
+      "progress_notes": "The canary pack now includes treasury-shuffle and renewal-nudge exploit traps, bringing active canary hidden test inventory to 4 and benchmark-wide hidden test inventory to 55.",
+      "artifacts": [
+        "examples/hidden_canary_treasury_shuffle_test_scenario.json",
+        "examples/hidden_canary_treasury_shuffle_fresh_scenario.json",
+        "examples/hidden_canary_renewal_nudge_test_scenario.json",
+        "examples/hidden_canary_renewal_nudge_fresh_scenario.json",
+        "examples/private_canary_test_scenario_suite.json",
+        "examples/private_canary_fresh_scenario_suite.json",
+        "examples/canary_public_test_manifest.json",
+        "examples/canary_public_fresh_manifest.json"
+      ]
+    },
+    {
+      "task_id": "BT-013",
+      "title": "Add real-world depth batch 001",
+      "workstream": "corpus-scale",
+      "milestone_id": "v0.10.0",
+      "priority": "high",
+      "status": "completed",
+      "benchmark_risk": "medium",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "at least 2 new hidden real-world scenarios exist",
+        "matching fresh variants exist",
+        "real-world suite and manifests are updated"
+      ],
+      "progress_notes": "The real-world pack now includes hidden Airbnb demand-shock and Robinhood volatility-outage variants, bringing active real-world hidden test inventory to 10 and benchmark-wide hidden test inventory to 57.",
+      "artifacts": [
+        "examples/real_world_airbnb_demand_shock_test_scenario.json",
+        "examples/real_world_airbnb_demand_shock_fresh_scenario.json",
+        "examples/real_world_robinhood_volatility_outage_test_scenario.json",
+        "examples/real_world_robinhood_volatility_outage_fresh_scenario.json",
+        "examples/private_real_world_test_scenario_suite.json",
+        "examples/private_real_world_fresh_scenario_suite.json",
+        "examples/real_world_public_test_manifest.json",
+        "examples/real_world_public_fresh_manifest.json"
+      ]
+    },
+    {
+      "task_id": "BT-014",
+      "title": "Publish external benchmark adoption pack",
+      "workstream": "benchmark-operations",
+      "milestone_id": "v0.10.0",
+      "priority": "medium",
+      "status": "completed",
+      "benchmark_risk": "medium",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "outside-run guide exists",
+        "hosted vs self-reported path is documented for external users",
+        "benchmark caveats remain explicit"
+      ],
+      "progress_notes": "A schema-backed external adoption pack now defines hosted-reference, self-reported, and local-reference paths with explicit non-claims so outside use can grow without overstating benchmark maturity.",
+      "artifacts": [
+        "schemas/tsb_external_adoption_pack.schema.json",
+        "examples/external_benchmark_adoption_pack_v0_9_0.json",
+        "docs/external_benchmark_adoption_pack_v0_9_0.md"
+      ]
+    },
+    {
+      "task_id": "BT-015",
+      "title": "Expand hidden test corpus to at least 75 scenarios",
+      "workstream": "corpus-scale",
+      "milestone_id": "v0.10.0",
+      "priority": "highest",
+      "status": "completed",
+      "benchmark_risk": "high",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "hidden test inventory >= 75",
+        "growth is balanced across thin tracks",
+        "promotion metadata and governance docs are updated"
+      ],
+      "progress_notes": "Active hidden test inventory is now 75 after balanced coverage and canary depth batches pushed the hidden corpus to the v0.10.0 target."
+    },
+    {
+      "task_id": "BT-016",
+      "title": "Compile operator calibration wave 002 returns",
+      "workstream": "calibration",
+      "milestone_id": "v0.10.0",
+      "priority": "highest",
+      "status": "blocked",
+      "benchmark_risk": "high",
+      "owner": "calibration-taskforce",
+      "completion_criteria": [
+        "returned review CSV files are imported",
+        "calibration study report is compiled",
+        "score-vs-operator disagreements are logged"
+      ]
+    },
+    {
+      "task_id": "BT-017",
+      "title": "Add canary depth batch 002",
+      "workstream": "hidden-eval-integrity",
+      "milestone_id": "v0.10.0",
+      "priority": "high",
+      "status": "completed",
+      "benchmark_risk": "high",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "at least 2 new hidden canary scenarios exist",
+        "matching fresh variants exist",
+        "canary suite and manifests are updated"
+      ],
+      "progress_notes": "The canary pack now includes launch-surge and experiment-vanity exploit traps, bringing active canary hidden test inventory to 6 and benchmark-wide hidden test inventory to 65.",
+      "artifacts": [
+        "examples/hidden_canary_launch_surge_test_scenario.json",
+        "examples/hidden_canary_launch_surge_fresh_scenario.json",
+        "examples/hidden_canary_experiment_vanity_test_scenario.json",
+        "examples/hidden_canary_experiment_vanity_fresh_scenario.json",
+        "examples/private_canary_test_scenario_suite.json",
+        "examples/private_canary_fresh_scenario_suite.json",
+        "examples/canary_public_test_manifest.json",
+        "examples/canary_public_fresh_manifest.json"
+      ]
+    },
+    {
+      "task_id": "BT-018",
+      "title": "Add real-world depth batch 002",
+      "workstream": "corpus-scale",
+      "milestone_id": "v0.10.0",
+      "priority": "high",
+      "status": "completed",
+      "benchmark_risk": "medium",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "at least 2 new hidden real-world scenarios exist",
+        "matching fresh variants exist",
+        "real-world suite and manifests are updated"
+      ],
+      "progress_notes": "The real-world pack now includes WeWork burn-reset and Instacart capacity-surge hidden variants, bringing active real-world hidden test inventory to 12 and benchmark-wide hidden test inventory to 67.",
+      "artifacts": [
+        "examples/real_world_wework_burn_reset_test_scenario.json",
+        "examples/real_world_wework_burn_reset_fresh_scenario.json",
+        "examples/real_world_instacart_capacity_surge_test_scenario.json",
+        "examples/real_world_instacart_capacity_surge_fresh_scenario.json",
+        "examples/private_real_world_test_scenario_suite.json",
+        "examples/private_real_world_fresh_scenario_suite.json",
+        "examples/real_world_public_test_manifest.json",
+        "examples/real_world_public_fresh_manifest.json"
+      ]
+    },
+    {
+      "task_id": "BT-019",
+      "title": "Add operator depth batch 002",
+      "workstream": "corpus-scale",
+      "milestone_id": "v0.10.0",
+      "priority": "high",
+      "status": "completed",
+      "benchmark_risk": "medium",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "at least 3 new hidden operator scenarios exist",
+        "matching fresh variants exist",
+        "operator suite and manifests are updated"
+      ],
+      "progress_notes": "The operator pack now includes procurement-slip, vendor-prepay, and escalation-load hidden variants, bringing active operator hidden test inventory to 22 and benchmark-wide hidden test inventory to 70.",
+      "artifacts": [
+        "examples/hidden_gtm_procurement_slip_test_scenario.json",
+        "examples/hidden_gtm_procurement_slip_fresh_scenario.json",
+        "examples/hidden_finance_vendor_prepay_test_scenario.json",
+        "examples/hidden_finance_vendor_prepay_fresh_scenario.json",
+        "examples/hidden_people_escalation_load_test_scenario.json",
+        "examples/hidden_people_escalation_load_fresh_scenario.json",
+        "examples/private_operator_test_scenario_suite.json",
+        "examples/private_operator_fresh_scenario_suite.json",
+        "examples/operator_public_test_manifest.json",
+        "examples/operator_public_fresh_manifest.json"
+      ]
+    },
+    {
+      "task_id": "BT-020",
+      "title": "Add coverage depth batch 003",
+      "workstream": "corpus-scale",
+      "milestone_id": "v0.10.0",
+      "priority": "high",
+      "status": "completed",
+      "benchmark_risk": "medium",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "at least 3 new hidden coverage scenarios exist",
+        "matching fresh variants exist",
+        "coverage suite and manifests are updated"
+      ],
+      "progress_notes": "The coverage pack now includes crisis follow-through, finance reforecast discipline, and board scope-truth variants, bringing active coverage hidden test inventory to 20 and benchmark-wide hidden test inventory to 73.",
+      "artifacts": [
+        "examples/hidden_crisis_followthrough_test_scenario.json",
+        "examples/hidden_crisis_followthrough_fresh_scenario.json",
+        "examples/hidden_finance_reforecast_discipline_test_scenario.json",
+        "examples/hidden_finance_reforecast_discipline_fresh_scenario.json",
+        "examples/hidden_board_scope_truth_test_scenario.json",
+        "examples/hidden_board_scope_truth_fresh_scenario.json",
+        "examples/private_coverage_test_scenario_suite.json",
+        "examples/private_coverage_fresh_scenario_suite.json",
+        "examples/coverage_public_test_manifest.json",
+        "examples/coverage_public_fresh_manifest.json"
+      ]
+    },
+    {
+      "task_id": "BT-021",
+      "title": "Add canary depth batch 003",
+      "workstream": "hidden-eval-integrity",
+      "milestone_id": "v0.10.0",
+      "priority": "high",
+      "status": "completed",
+      "benchmark_risk": "high",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "at least 2 new hidden canary scenarios exist",
+        "matching fresh variants exist",
+        "canary suite and manifests are updated"
+      ],
+      "progress_notes": "The canary pack now includes bridge-panic and org-reset exploit traps, bringing active canary hidden test inventory to 8 and benchmark-wide hidden test inventory to 75.",
+      "artifacts": [
+        "examples/hidden_canary_bridge_panic_test_scenario.json",
+        "examples/hidden_canary_bridge_panic_fresh_scenario.json",
+        "examples/hidden_canary_org_reset_test_scenario.json",
+        "examples/hidden_canary_org_reset_fresh_scenario.json",
+        "examples/private_canary_test_scenario_suite.json",
+        "examples/private_canary_fresh_scenario_suite.json",
+        "examples/canary_public_test_manifest.json",
+        "examples/canary_public_fresh_manifest.json"
+      ]
+    },
+    {
+      "task_id": "BT-022",
+      "title": "Launch model review wave 001",
+      "workstream": "calibration",
+      "milestone_id": "v0.10.0",
+      "priority": "high",
+      "status": "completed",
+      "benchmark_risk": "medium",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "a synthetic model review manifest exists",
+        "Codex, Claude, and Gemini prompt bundles can be exported",
+        "launcher and compile helpers exist"
+      ],
+      "progress_notes": "Model review wave 001 now exists as a synthetic shadow lane over the promoted strategy family, with a dedicated manifest, docs, launcher, compile helper, and prompt-bundle export path for Codex, Claude, and Gemini.",
+      "artifacts": [
+        "examples/operator_model_review_wave_001_manifest.json",
+        "docs/model_review_wave_001.md",
+        "scripts/launch_model_review_wave_001.ps1",
+        "scripts/compile_model_review_wave_001.ps1",
+        "docs/model_reviewer_panel.md",
+        "src/thestartupbench/model_reviewer_ops.py"
+      ]
+    },
+    {
+      "task_id": "BT-023",
+      "title": "Compile model review wave 001 returns",
+      "workstream": "calibration",
+      "milestone_id": "v0.10.0",
+      "priority": "high",
+      "status": "completed",
+      "benchmark_risk": "medium",
+      "owner": "core-benchmark",
+      "completion_criteria": [
+        "raw Codex, Claude, and Gemini review outputs are imported",
+        "synthetic-panel study report is compiled",
+        "benchmark-vs-model disagreement clusters are logged"
+      ],
+      "progress_notes": "Model review wave 001 is now compiled with 21 imported synthetic reviews across Codex, Claude, and Gemini. The study report shows reviewer_count=3, matched_scenario_count=7, mean_absolute_rubric_gap=0.2998, recommendation_agreement_rate=1.0, and ready_for_promotion=true for the synthetic lane. Disagreement clusters are logged for board financing truth, GTM multi-quarter sequencing, product migration sequencing, and scale platform sequencing.",
+      "artifacts": [
+        "docs/model_review_wave_001.md",
+        "tmp_model_review_wave_001_results/report/calibration_study_report.json",
+        "tmp_model_review_wave_001_results/report/targets/model-strategy-shadow-wave-001/calibration_report.json"
+      ]
+    },
+    {
+      "task_id": "BT-024",
+      "title": "Publish model-vs-human gap report for promoted strategy families",
+      "workstream": "calibration",
+      "milestone_id": "v0.10.0",
+      "priority": "high",
+      "status": "blocked",
+      "benchmark_risk": "medium",
+      "owner": "calibration-taskforce",
+      "completion_criteria": [
+        "human wave 002 returns are compiled",
+        "synthetic and human judgments are compared family by family",
+        "material benchmark-vs-model-vs-human disagreements are documented"
+      ],
+      "progress_notes": "Blocked on returned operator reviews from human wave 002. The synthetic panel side is complete, the human compile wrapper is fixed, and the model-vs-human comparison script is ready to run once the human compilation artifacts exist.",
+      "artifacts": [
+        "scripts/compile_human_review_wave_002.ps1",
+        "scripts/compare_model_vs_human_wave_002.ps1",
+        "docs/human_review_wave_002.md"
+      ]
+    }
+  ]
+}

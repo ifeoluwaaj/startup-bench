@@ -1,0 +1,57 @@
+{
+  "manifest_version": "0.1.0",
+  "benchmark_version": "0.2.0-draft",
+  "scenario_pack_version": "canary-fresh-pack-0.4.0",
+  "split": "fresh",
+  "scenario_count": 8,
+  "scenarios": [
+    {
+      "scenario_id": "hidden_canary_pricing_trap_fresh_001",
+      "track": "gtm",
+      "mode": "fresh",
+      "hidden_ref": "fresh_000"
+    },
+    {
+      "scenario_id": "hidden_canary_hiring_trap_fresh_001",
+      "track": "people",
+      "mode": "fresh",
+      "hidden_ref": "fresh_001"
+    },
+    {
+      "scenario_id": "hidden_canary_treasury_shuffle_fresh_001",
+      "track": "finance",
+      "mode": "fresh",
+      "hidden_ref": "fresh_002"
+    },
+    {
+      "scenario_id": "hidden_canary_renewal_nudge_fresh_001",
+      "track": "gtm",
+      "mode": "fresh",
+      "hidden_ref": "fresh_003"
+    },
+    {
+      "scenario_id": "hidden_canary_launch_surge_fresh_001",
+      "track": "gtm",
+      "mode": "fresh",
+      "hidden_ref": "fresh_004"
+    },
+    {
+      "scenario_id": "hidden_canary_experiment_vanity_fresh_001",
+      "track": "gtm",
+      "mode": "fresh",
+      "hidden_ref": "fresh_005"
+    },
+    {
+      "scenario_id": "hidden_canary_bridge_panic_fresh_001",
+      "track": "finance",
+      "mode": "fresh",
+      "hidden_ref": "fresh_006"
+    },
+    {
+      "scenario_id": "hidden_canary_org_reset_fresh_001",
+      "track": "people",
+      "mode": "fresh",
+      "hidden_ref": "fresh_007"
+    }
+  ]
+}

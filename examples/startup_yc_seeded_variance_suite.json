@@ -1,0 +1,44 @@
+{
+  "suite_version": "0.1.0",
+  "benchmark_version": "0.2.0-draft",
+  "scenario_pack_version": "startup-yc-seeded-variance-0.1.0",
+  "split": "dev",
+  "scenarios": [
+    {
+      "scenario_id": "gtm_channel_seeded_variance_001",
+      "path": "minimal_gtm_seeded_variance_scenario.json",
+      "track": "gtm",
+      "mode": "dev"
+    },
+    {
+      "scenario_id": "finance_seeded_variance_001",
+      "path": "minimal_finance_seeded_variance_scenario.json",
+      "track": "finance",
+      "mode": "dev"
+    },
+    {
+      "scenario_id": "product_seeded_variance_001",
+      "path": "minimal_product_seeded_variance_scenario.json",
+      "track": "product",
+      "mode": "dev"
+    },
+    {
+      "scenario_id": "people_seeded_variance_001",
+      "path": "minimal_people_seeded_variance_scenario.json",
+      "track": "people",
+      "mode": "dev"
+    },
+    {
+      "scenario_id": "board_product_seeded_variance_001",
+      "path": "minimal_board_seeded_variance_scenario.json",
+      "track": "board",
+      "mode": "dev"
+    },
+    {
+      "scenario_id": "scale_seeded_variance_001",
+      "path": "minimal_scale_seeded_variance_scenario.json",
+      "track": "scale",
+      "mode": "dev"
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "manifest_version": "0.1.0",
+  "benchmark_version": "0.2.0-draft",
+  "scenario_pack_version": "operator-test-pack-0.7.0",
+  "split": "test",
+  "scenario_count": 22,
+  "scenarios": [
+    {
+      "scenario_id": "hidden_gtm_pipeline_reset_test_001",
+      "track": "gtm",
+      "mode": "test",
+      "hidden_ref": "test_000"
+    },
+    {
+      "scenario_id": "hidden_gtm_enterprise_freeze_test_001",
+      "track": "gtm",
+      "mode": "test",
+      "hidden_ref": "test_001"
+    },
+    {
+      "scenario_id": "hidden_gtm_reference_decay_test_001",
+      "track": "gtm",
+      "mode": "test",
+      "hidden_ref": "test_002"
+    },
+    {
+      "scenario_id": "hidden_finance_liquidity_test_001",
+      "track": "finance",
+      "mode": "test",
+      "hidden_ref": "test_003"
+    },
+    {
+      "scenario_id": "hidden_finance_margin_shock_test_001",
+      "track": "finance",
+      "mode": "test",
+      "hidden_ref": "test_004"
+    },
+    {
+      "scenario_id": "hidden_finance_covenant_squeeze_test_001",
+      "track": "finance",
+      "mode": "test",
+      "hidden_ref": "test_005"
+    },
+    {
+      "scenario_id": "hidden_people_attrition_test_001",
+      "track": "people",
+      "mode": "test",
+      "hidden_ref": "test_006"
+    },
+    {
+      "scenario_id": "hidden_people_reorg_drag_test_001",
+      "track": "people",
+      "mode": "test",
+      "hidden_ref": "test_007"
+    },
+    {
+      "scenario_id": "hidden_people_manager_span_test_001",
+      "track": "people",
+      "mode": "test",
+      "hidden_ref": "test_008"
+    },
+    {
+      "scenario_id": "hidden_gtm_discount_spiral_test_001",
+      "track": "gtm",
+      "mode": "test",
+      "hidden_ref": "test_009"
+    },
+    {
+      "scenario_id": "hidden_gtm_partner_backfire_test_001",
+      "track": "gtm",
+      "mode": "test",
+      "hidden_ref": "test_010"
+    },
+    {
+      "scenario_id": "hidden_finance_receivables_freeze_test_001",
+      "track": "finance",
+      "mode": "test",
+      "hidden_ref": "test_011"
+    },
+    {
+      "scenario_id": "hidden_finance_stepdown_raise_test_001",
+      "track": "finance",
+      "mode": "test",
+      "hidden_ref": "test_012"
+    },
+    {
+      "scenario_id": "hidden_people_exec_backfill_test_001",
+      "track": "people",
+      "mode": "test",
+      "hidden_ref": "test_013"
+    },
+    {
+      "scenario_id": "hidden_people_support_burnout_test_001",
+      "track": "people",
+      "mode": "test",
+      "hidden_ref": "test_014"
+    },
+    {
+      "scenario_id": "hidden_people_decision_latency_test_001",
+      "track": "people",
+      "mode": "test",
+      "hidden_ref": "test_015"
+    },
+    {
+      "scenario_id": "hidden_gtm_multithread_stall_test_001",
+      "track": "gtm",
+      "mode": "test",
+      "hidden_ref": "test_016"
+    },
+    {
+      "scenario_id": "hidden_finance_reforecast_drag_test_001",
+      "track": "finance",
+      "mode": "test",
+      "hidden_ref": "test_017"
+    },
+    {
+      "scenario_id": "hidden_people_onboarding_manager_gap_test_001",
+      "track": "people",
+      "mode": "test",
+      "hidden_ref": "test_018"
+    },
+    {
+      "scenario_id": "hidden_gtm_procurement_slip_test_001",
+      "track": "gtm",
+      "mode": "test",
+      "hidden_ref": "test_019"
+    },
+    {
+      "scenario_id": "hidden_finance_vendor_prepay_test_001",
+      "track": "finance",
+      "mode": "test",
+      "hidden_ref": "test_020"
+    },
+    {
+      "scenario_id": "hidden_people_escalation_load_test_001",
+      "track": "people",
+      "mode": "test",
+      "hidden_ref": "test_021"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "manifest_version": "0.1.0",
+  "benchmark_version": "0.2.0-draft",
+  "scenario_pack_version": "canary-test-pack-0.4.0",
+  "split": "test",
+  "scenario_count": 8,
+  "scenarios": [
+    {
+      "scenario_id": "hidden_canary_pricing_trap_test_001",
+      "track": "gtm",
+      "mode": "test",
+      "hidden_ref": "test_000"
+    },
+    {
+      "scenario_id": "hidden_canary_hiring_trap_test_001",
+      "track": "people",
+      "mode": "test",
+      "hidden_ref": "test_001"
+    },
+    {
+      "scenario_id": "hidden_canary_treasury_shuffle_test_001",
+      "track": "finance",
+      "mode": "test",
+      "hidden_ref": "test_002"
+    },
+    {
+      "scenario_id": "hidden_canary_renewal_nudge_test_001",
+      "track": "gtm",
+      "mode": "test",
+      "hidden_ref": "test_003"
+    },
+    {
+      "scenario_id": "hidden_canary_launch_surge_test_001",
+      "track": "gtm",
+      "mode": "test",
+      "hidden_ref": "test_004"
+    },
+    {
+      "scenario_id": "hidden_canary_experiment_vanity_test_001",
+      "track": "gtm",
+      "mode": "test",
+      "hidden_ref": "test_005"
+    },
+    {
+      "scenario_id": "hidden_canary_bridge_panic_test_001",
+      "track": "finance",
+      "mode": "test",
+      "hidden_ref": "test_006"
+    },
+    {
+      "scenario_id": "hidden_canary_org_reset_test_001",
+      "track": "people",
+      "mode": "test",
+      "hidden_ref": "test_007"
+    }
+  ]
+}

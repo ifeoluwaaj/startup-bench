@@ -1,0 +1,129 @@
+{
+  "manifest_version": "0.1.0",
+  "benchmark_version": "0.2.0-draft",
+  "scenario_pack_version": "coverage-fresh-pack-0.11.0",
+  "split": "fresh",
+  "scenario_count": 20,
+  "scenarios": [
+    {
+      "scenario_id": "hidden_0to1_activation_loop_fresh_001",
+      "track": "0to1",
+      "mode": "fresh",
+      "hidden_ref": "fresh_000"
+    },
+    {
+      "scenario_id": "hidden_0to1_false_demand_fresh_001",
+      "track": "0to1",
+      "mode": "fresh",
+      "hidden_ref": "fresh_001"
+    },
+    {
+      "scenario_id": "hidden_finance_bridge_terms_fresh_001",
+      "track": "finance",
+      "mode": "fresh",
+      "hidden_ref": "fresh_002"
+    },
+    {
+      "scenario_id": "hidden_finance_collection_drag_fresh_001",
+      "track": "finance",
+      "mode": "fresh",
+      "hidden_ref": "fresh_003"
+    },
+    {
+      "scenario_id": "hidden_people_ownership_break_fresh_001",
+      "track": "people",
+      "mode": "fresh",
+      "hidden_ref": "fresh_004"
+    },
+    {
+      "scenario_id": "hidden_launch_distribution_fresh_001",
+      "track": "gtm",
+      "mode": "fresh",
+      "hidden_ref": "fresh_005"
+    },
+    {
+      "scenario_id": "hidden_finance_structured_drag_fresh_001",
+      "track": "finance",
+      "mode": "fresh",
+      "hidden_ref": "fresh_006"
+    },
+    {
+      "scenario_id": "hidden_growth_experiment_fresh_001",
+      "track": "gtm",
+      "mode": "fresh",
+      "hidden_ref": "fresh_007"
+    },
+    {
+      "scenario_id": "hidden_board_update_quality_fresh_001",
+      "track": "board",
+      "mode": "fresh",
+      "hidden_ref": "fresh_008"
+    },
+    {
+      "scenario_id": "hidden_customer_communication_fresh_001",
+      "track": "crisis",
+      "mode": "fresh",
+      "hidden_ref": "fresh_009"
+    },
+    {
+      "scenario_id": "hidden_hiring_plan_quality_fresh_001",
+      "track": "people",
+      "mode": "fresh",
+      "hidden_ref": "fresh_010"
+    },
+    {
+      "scenario_id": "hidden_0to1_repositioning_fresh_001",
+      "track": "0to1",
+      "mode": "fresh",
+      "hidden_ref": "fresh_011"
+    },
+    {
+      "scenario_id": "hidden_0to1_founder_channel_fresh_001",
+      "track": "0to1",
+      "mode": "fresh",
+      "hidden_ref": "fresh_012"
+    },
+    {
+      "scenario_id": "hidden_0to1_retention_cliff_fresh_001",
+      "track": "0to1",
+      "mode": "fresh",
+      "hidden_ref": "fresh_013"
+    },
+    {
+      "scenario_id": "hidden_board_forecast_discipline_fresh_001",
+      "track": "board",
+      "mode": "fresh",
+      "hidden_ref": "fresh_014"
+    },
+    {
+      "scenario_id": "hidden_hiring_priority_drag_fresh_001",
+      "track": "people",
+      "mode": "fresh",
+      "hidden_ref": "fresh_015"
+    },
+    {
+      "scenario_id": "hidden_growth_review_discipline_fresh_001",
+      "track": "gtm",
+      "mode": "fresh",
+      "hidden_ref": "fresh_016"
+    },
+    {
+      "scenario_id": "hidden_crisis_followthrough_fresh_001",
+      "track": "crisis",
+      "mode": "fresh",
+      "hidden_ref": "fresh_017"
+    },
+    {
+      "scenario_id": "hidden_finance_reforecast_discipline_fresh_001",
+      "track": "finance",
+      "mode": "fresh",
+      "hidden_ref": "fresh_018"
+    },
+    {
+      "scenario_id": "hidden_board_scope_truth_fresh_001",
+      "track": "board",
+      "mode": "fresh",
+      "hidden_ref": "fresh_019"
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+![TheStartupBench benchmark overview](docs/assets/readme-benchmark-hero.png)
+
+# TheStartupBench
+
+**A benchmark for evaluating how well AI agents operate a startup under uncertainty.**
+
+Most AI benchmarks test coding, math, or retrieval. TheStartupBench tests something more operational: can an AI make the messy, sequential tradeoffs that real startup operators face every week? Budget cuts vs. product quality. Incident response vs. roadmap velocity. Honest board communication vs. optimistic forecasting. Hiring under pressure vs. burn discipline.
+
+The agent is dropped into a simulated company with real financial state, product quality, customer health, team dynamics, market pressure, and a board to report to. Events happen over time: customers churn, infrastructure costs spike, key people leave, renewals wobble, financing gets tighter, and support load compounds. The model has to operate through those changes using the same levers a real founder, COO, or staff operator would use: adjusting burn, resolving incidents, sequencing launches, managing pipeline, handling org issues, and deciding what to communicate upstream.
+
+The benchmark is stateful and tool-driven rather than prompt-only. Models read metrics, act through constrained tools, advance the simulation week by week, and then get scored on the resulting world state. The visible public dev suite is already broad enough that frontier models can all pass the scenarios structurally, but still separate meaningfully on quality of judgment.
+
+Scoring is programmatic across seven outcome dimensions:
+
+- `cash efficiency`
+- `revenue quality`
+- `product health`
+- `customer health`
+- `team health`
+- `strategic coherence`
+- `risk management`
+
+Hard-failure gates then penalize or fail runs for outcomes like bankruptcy, catastrophic trust collapse, or severe financing breakdown. No vibes. No free-form LLM judge deciding the final score.
+
+What TheStartupBench is trying to measure:
+
+- whether a model can act like a startup operator, not just describe startup advice
+- whether decisions stay coherent across multiple weeks instead of a single polished answer
+- whether a model can trade off survival, trust, growth, product depth, and org health at the same time
+- whether frontier models differ on actual operating judgment before the human-calibration phase
+
+This repo is the reference implementation and research harness for that process: scenario specs, simulator primitives, scoring contracts, public/hidden suite machinery, calibration tooling, and provider-run comparison workflows.
+
+## Early Results
+
+### Full Public Dev Benchmark (13 scenarios)
+
+| Model | Overall | Passes |
+|---|---:|---:|
+| Codex | **74.06%** | 13/13 |
+| Claude Opus 4.6 | 72.99% | 13/13 |
+| Gemini | 66.93% | 13/13 |
+
+Current visible-suite read:
+
+- Codex won 9 of the 13 public dev scenarios and led overall on the expanded suite.
+- Claude won 4 of the 13 public dev scenarios and was strongest on `people`, `growth_experiment`, `gtm`, and effectively tied `finance`.
+- Gemini passed all 13 scenarios but trailed on leadership-, product-, and board-heavy slices.
+
+This public dev suite is a research comparison surface, not an official hosted leaderboard result.
+
+## How It Works
+
+1. **Pick a scenario.** Each scenario defines a startup at a specific stage with realistic financials, product state, customer metrics, team health, and a set of events that will fire at specific turns.
+
+2. **Run an agent.** The agent gets the initial state and a set of tools. Each turn, it reads metrics, makes decisions (hire, cut burn, resolve incidents, update the board, invest in quality...), then advances the simulation by one week. Events fire during advances -- cost shocks, customer escalations, deal closures, team departures.
+
+3. **Score the outcome.** After all turns complete, programmatic evaluators score the final world state across weighted outcome dimensions. Hard constraints (did the company go bankrupt? did trust collapse?) gate pass/fail. Each scenario weights the dimensions differently -- a board governance scenario can overweight strategic coherence, while a crisis scenario can overweight customer health and risk management.
+
+## Scenarios
+
+| Track | Scenario | Stage | Core Challenge |
+|---|---|---|---|
+| 0to1 | Design Partner Conversion | Pre-seed | Activation gap at 0.42 onboarding quality blocks pipeline conversion |
+| b2b_saas | Runway and Pricing Reset | Seed | Infrastructure cost shock hits mid-recovery from a major incident |
+| board | Board Reforecast Pressure | Series A | Credible reforecast after missing plan, with procurement delays |
+| crisis | Trust Recovery | Seed | Two open incidents, 4.1% churn, and a renewal escalation incoming |
+| scale | Capacity Balance | Growth | Revenue growth strains reliability -- each surge creates new incidents |
+| gtm | Channel Mix Reset | Series A | Outbound is dying, a competitor is bundling, pipeline is softening |
+| gtm | Launch Distribution | Series A | Launch attention is available, but onboarding and support readiness are too weak for a broad rollout |
+| gtm | Growth Experiment Discipline | Series A | A tempting channel spike appears before activation and customer quality are strong enough to scale |
+| finance | Treasury Tradeoff | Series A | 83% treasury concentration, rising financing pressure, payment delays |
+| finance | Fundraise Reset | Series A | Runway can be extended, but only by balancing punitive dilution, signaling, and board truth cleanly |
+| people | Org Stability | Series B | Morale at 0.48, attrition risk at 0.64, a key manager about to leave |
+| people | Leadership Bench | Series B | A leadership gap creates ownership drift, onboarding pain, and manager-confidence risk |
+| product | Quality Debt | Series A | Launch bump drives demand but deferred quality bill hits support/trust |
+
+Additional hidden packs (test, fresh, canary, real-world, strategy) exist for anti-gaming and leaderboard integrity.
+
+## Quick Start
+
+```bash
+# Install
+python -m pip install -e .
+python -m thestartupbench version
+
+# Run a single baseline
+python -m thestartupbench run-baseline \
+  examples/minimal_crisis_scenario.json \
+  heuristic_resilient_operator \
+  --seed 1 --max-turns 6 --output-dir tmp_out
+
+# Run the full public dev suite
+python -m thestartupbench run-suite \
+  examples/dev_scenario_suite.json baseline \
+  --baseline-id heuristic_resilient_operator \
+  --seeds 1,2 --max-turns 4 \
+  --profile-path examples/official_eval_profile.json \
+  --output-dir tmp_out
+
+# Run a pre-generated tool script (e.g. from an LLM)
+python -m thestartupbench run-script \
+  examples/minimal_crisis_scenario.json \
+  examples/minimal_tool_script.json \
+  --seed 1 --output-dir tmp_out
+```
+
+## Tools
+
+The agent interacts with the simulated startup through 32 tools across 9 domains:
+
+| Domain | Tools | What They Do |
+|---|---|---|
+| **Metrics** | `metrics.query`, `metrics.report` | Read current state and KPIs |
+| **Product** | `product.roadmap.read`, `product.roadmap.write`, `product.launch` | Ship features, improve quality, resolve incidents, and launch product changes |
+| **Growth** | `growth.experiment.create`, `growth.experiment.review` | Run and inspect bounded growth and activation experiments |
+| **Sales** | `sales.pipeline.read`, `sales.pipeline.update`, `sales.pricing.propose` | Manage deals and pricing |
+| **Finance** | `finance.plan.read/write`, `finance.treasury.read/rebalance`, `finance.raise.propose` | Burn control, treasury, fundraising |
+| **Ops** | `ops.incident.read/respond`, `ops.support.read/resolve` | Incident response and support backlog |
+| **People** | `people.hiring.read/update`, `people.org.propose`, `people.org.read/adjust` | Hiring actions, org proposals, and org changes |
+| **Governance** | `board.read`, `board.update`, `legal.compliance.read/respond` | Board comms and compliance |
+| **General** | `research.market.read`, `notes.read/write`, `sim.advance` | Market intel, notes, advance time |
+
+## Scoring
+
+Each scenario defines weights across four outcome dimensions:
+
+- **Cash efficiency** -- runway, burn quality, treasury concentration, dilution
+- **Revenue quality** -- revenue coverage, pipeline strength, pricing signals, demand
+- **Customer health** -- trust, churn, support backlog, morale, delivery capacity
+- **Strategic coherence** -- board communication, crisis response, hiring decisions, behavioral consistency
+
+Hard constraints gate pass/fail: bankruptcy, severe trust breach, compliance failure, financing collapse.
+
+## Baselines
+
+Six built-in heuristic operators for comparison:
+
+| Baseline | Strategy |
+|---|---|
+| `heuristic_resilient_operator` | Incident-first, trust recovery, defensive |
+| `heuristic_market_aware_operator` | Market-reading, demand-responsive |
+| `heuristic_long_horizon_operator` | Runway-preserving, conservative |
+| `heuristic_b2b_operator` | Pipeline and pricing focused |
+| `heuristic_governance_operator` | Board-communication heavy |
+| `heuristic_liquidity_operator` | Treasury and cash management |
+
+## Release State
+
+- **Freeze label:** `v0.9-precalibration`
+- **Package version:** `0.9.0`
+- **Maturity:** pre-human-calibration benchmark prototype
+
+What this means:
+- Ready for technical contributors and early volunteers
+- Ready for research benchmarking
+- Not yet a finished public leaderboard benchmark
+
+## Project Structure
+
+```
+thestartupbench/
+  src/thestartupbench/     # Runtime, evaluators, baselines, CLI
+  tests/                   # Unit and integration tests
+  examples/                # Scenarios, suites, profiles, manifests
+  schemas/                 # JSON schemas for all data contracts
+  spec/                    # Formal specifications
+  scripts/                 # Trial and calibration automation
+  docs/                    # Guides, audits, calibration logs
+```
+
+## Documentation
+
+**Getting started:**
+- [Getting started guide](docs/getting_started.md)
+- [Evaluation modes](docs/evaluation_modes.md)
+- [Contribution guide](CONTRIBUTING.md)
+
+**Model trials:**
+- [Initial 3-scenario trial](docs/model_trial_wave_001.md)
+- [Full public dev trial](docs/model_trial_wave_full_dev.md)
+
+**Benchmark design:**
+- [RFC](THE_STARTUP_BENCH_RFC.md)
+- [Benchmark status](docs/benchmark_status.md)
+- [Benchmark maturity plan](docs/benchmark_maturity_plan.md)
+- [Benchmark task board](docs/benchmark_task_board.md)
+- [External benchmark adoption pack](docs/external_benchmark_adoption_pack_v0_9_0.md)
+- [Coverage expansion policy](docs/coverage_expansion_policy.md)
+- [Coverage build plan](docs/coverage_build_plan.md)
+- [Known issues](docs/benchmark_known_issues.md)
+- [SOTA audit](docs/sota_benchmark_audit.md) | [Re-audit](docs/sota_reaudit.md)
+
+**Calibration:**
+- [Calibration outcomes](docs/calibration_outcomes.md)
+- [Calibration strategy](docs/calibration_taskforce_strategy.md)
+- [Evaluator adjudication log](docs/evaluator_adjudication_log.md)
+- [Human review wave 001](docs/human_review_wave_001.md)
+- [Reviewer manual](docs/reviewer_manual.md)
+
+**Community:**
+- [Volunteer call](docs/volunteer_call.md)
+- [Founder/operator outreach](docs/founder_operator_outreach.md)
+- [X post kit](docs/x_post_kit.md)
+
+<details>
+<summary><strong>Specifications</strong></summary>
+
+- [Benchmark contract](spec/benchmark_contract.md)
+- [Scenario spec](spec/scenario_spec.md)
+- [State model](spec/state_model.md)
+- [Scenario primitives](spec/scenario_primitives.md)
+- [Tool contract](spec/tool_contract.md)
+- [Tool schema catalog](spec/tool_schema_catalog.md)
+- [Scoring contract](spec/scoring_contract.md)
+- [Trace spec](spec/trace_spec.md)
+- [Runner contract](spec/runner_contract.md)
+- [Evaluator contract](spec/evaluator_contract.md)
+- [Validation contract](spec/validation_contract.md)
+- [Leaderboard protocol](spec/leaderboard_protocol.md)
+- [Hidden eval policy](spec/hidden_eval_policy.md)
+- [Operator eval protocol](spec/operator_eval_protocol.md)
+
+</details>
+
+<details>
+<summary><strong>All CLI commands</strong></summary>
+
+```bash
+python -m thestartupbench version
+python -m thestartupbench validate scenario examples/minimal_b2b_saas_scenario.json
+python -m thestartupbench manifest examples/minimal_b2b_saas_scenario.json
+python -m thestartupbench list-baselines
+python -m thestartupbench lint-scenario examples/minimal_b2b_saas_scenario.json
+python -m thestartupbench run-dry examples/minimal_b2b_saas_scenario.json --seed 1 --output-dir tmp_out
+python -m thestartupbench run-script examples/minimal_b2b_saas_scenario.json examples/minimal_tool_script.json --seed 1 --output-dir tmp_out
+python -m thestartupbench run-baseline examples/minimal_crisis_scenario.json heuristic_resilient_operator --seed 1 --max-turns 6 --output-dir tmp_out
+python -m thestartupbench run-campaign examples/minimal_crisis_scenario.json baseline --baseline-id heuristic_resilient_operator --seeds 1,2,3 --max-turns 6 --output-dir tmp_out
+python -m thestartupbench show-official-profile examples/official_eval_profile.json
+python -m thestartupbench emit-run-manifest examples/dev_scenario_suite.json baseline --seeds 1,2,3,4,5 --baseline-id heuristic_resilient_operator --max-turns 8 --profile-path examples/official_eval_profile.json --output-dir tmp_out
+python -m thestartupbench run-suite examples/dev_scenario_suite.json baseline --baseline-id heuristic_resilient_operator --seeds 1,2 --max-turns 4 --profile-path examples/official_eval_profile.json --output-dir tmp_out
+python -m thestartupbench redact-suite examples/private_test_scenario_suite.json --output-dir tmp_out
+python -m thestartupbench check-suite-family examples/private_canary_test_scenario_suite.json examples/private_canary_fresh_scenario_suite.json
+python -m thestartupbench aggregate-operator-reviews examples/minimal_operator_review.json --output-dir tmp_out
+python -m thestartupbench build-calibration-report --suite-report-path tmp_out/suite_report.json --review-paths examples/minimal_operator_review.json --output-dir tmp_out
+python -m thestartupbench run-calibration-study examples/operator_calibration_study_manifest.json --output-dir tmp_out
+python -m thestartupbench assign-reviewers examples/operator_calibration_study_manifest.json --study-run-dir tmp_out --roster-path examples/reviewer_roster_template.csv --output-dir tmp_out
+python -m thestartupbench export-review-forms tmp_out/review_assignments.json --output-dir tmp_out
+python -m thestartupbench import-review-forms tmp_out --output-dir tmp_out
+python -m thestartupbench export-model-review-bundles tmp_out --output-dir tmp_model_bundles
+python -m thestartupbench import-model-reviews tmp_model_outputs --output-dir tmp_model_import
+python -m thestartupbench compile-calibration-study examples/operator_calibration_study_manifest.json --study-run-dir tmp_out --review-paths examples/minimal_operator_review.json --output-dir tmp_out
+python -m thestartupbench build-submission --suite-report-paths tmp_out/suite_report.json --model-id heuristic_resilient_operator --provider baseline --contamination-flag clean --output-dir tmp_out
+python -m unittest discover -s tests -p "test_*.py"
+```
+
+</details>
+
+<details>
+<summary><strong>Schemas and artifacts</strong></summary>
+
+**JSON Schemas:**
+`tsb_scenario`, `tsb_world_state`, `tsb_primitives`, `tsb_tool_manifest`, `tsb_tool_call`, `tsb_tool_response`, `tsb_evaluator_result`, `tsb_score_report`, `tsb_batch_report`, `tsb_scenario_suite`, `tsb_public_suite_manifest`, `tsb_official_eval_profile`, `tsb_run_manifest`, `tsb_suite_report`, `tsb_trace`, `tsb_submission`, `tsb_operator_review`, `tsb_operator_review_summary`, `tsb_calibration_report`, `tsb_calibration_study`, `tsb_review_packet`, `tsb_calibration_study_run`, `tsb_calibration_study_report`, `tsb_review_assignments`, `tsb_review_form_export`, `tsb_review_form_import`, `tsb_external_adoption_pack`
+
+All schemas live in `schemas/` as `tsb_*.schema.json`.
+
+**Example files:** All in `examples/` -- scenarios, suites, profiles, manifests, review templates, calibration configs.
+
+</details>
+
+## State Engine
+
+- Tool handlers route mutations through a shared operation engine
+- Scheduled events reference reusable primitives from `event_model.primitive_catalog`
+- Supported operations: `set`, `increment`, `multiply`, `clamp`, `append_unique`
